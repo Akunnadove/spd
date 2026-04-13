@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spooday Concept</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 600px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #38bdf8;
+      border: none;
+      border-radius: 30px;
+      color: #0f172a;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #0ea5e9;
+    }
+
+    .section {
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .float {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(56, 189, 248, 0.2);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .float:nth-child(1) { top: 10%; left: 10%; }
+    .float:nth-child(2) { bottom: 10%; right: 10%; background: rgba(167, 139, 250, 0.2); }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(40px); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Spooday</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="float"></div>
+  <div class="float"></div>
+
+  <section class="hero" id="home">
+    <h1>Welcome to Spooday Concept</h1>
+    <p>A modern futuristic idea space where creativity meets technology. Build, design, and innovate with style.</p>
+    <button class="btn" onclick="scrollToSection()">Explore Now</button>
+  </section>
+
+  <section class="section" id="features">
+    <h2>Features</h2>
+    <div class="cards">
+      <div class="card">⚡ Fast & Responsive Design</div>
+      <div class="card">🎨 Modern UI Experience</div>
+      <div class="card">🚀 Built for Innovation</div>
+      <div class="card">🔒 Secure & Scalable</div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Spooday</h2>
+    <p style="max-width:700px;margin:auto;color:#94a3b8;">
+      Spooday Concept is a futuristic digital platform idea designed to inspire creators, developers,
+      and innovators to build next-generation experiences with simplicity and power.
+    </p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Email: hello@spooday.com</p>
+  </section>
+
+  <footer>
+    &copy; 2026 Spooday Concept. All rights reserved.
+  </footer>
+
+  <script>
+    function scrollToSection() {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
+        } else {
+          card.style.opacity = 0.5;
+          card.style.transform = 'translateY(20px)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
